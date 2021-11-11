@@ -64,7 +64,7 @@ def _preprocess_data(data):
     
     # drop non-useful column
     
-    predictor_vector['Valencia_pressure'] = predict_vector['Valencia_pressure'].fillna(0)
+    predict_vector['Valencia_pressure'] = predict_vector['Valencia_pressure'].fillna(0)
     
     return predict_vector
 
