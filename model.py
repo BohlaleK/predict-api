@@ -57,20 +57,13 @@ def _preprocess_data(data):
     # receive marks for submitting this code in an unchanged state.
     # ---------------------------------------------------------------
 
-    # ----------- Replace this code with your own preprocessing steps --------
-    predict_vector = feature_vector_df[['Madrid_wind_speed', 'Valencia_wind_deg', 'Valencia_wind_speed',
-       'Seville_humidity', 'Madrid_humidity', 'Bilbao_clouds_all',
-       'Bilbao_wind_speed','Madrid_clouds_all', 'Seville_wind_speed',
-       'Valencia_snow_3h', 'Madrid_weather_id', 'Barcelona_weather_id',
-       'Seville_weather_id', 'Valencia_temp', 'Bilbao_weather_id',
-       'Seville_temp', 'Valencia_humidity', 'Bilbao_temp',
-       'Madrid_temp']]
-    # ------------------------------------------------------------------------
-    cols = [col for col in predict_vector.columns if 'Madrid' in col]
+    # ----------- Replace this code with your own preprocessing steps -------
     
-    predict_vector = predict_vector[cols]
+    predict_vector = feature_vector_df[['time', 'Madrid_wind_speed', 'Valencia_wind_speed','Madrid_humidity',
+                                        'Madrid_weather_id','Seville_temp','Madrid_temp', 'load_shortfall_3h']]
     
-    
+    # drop non-useful column
+    predict_vector = predict_vector.drop(['time','load_shortfall_3h'], axis = 1)
     
     return predict_vector
 
